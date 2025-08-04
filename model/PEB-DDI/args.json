@@ -1,0 +1,27 @@
+{
+    "dataset_name": "drugbank_s0_11",
+
+    "params": {
+        "lr": 1e-3,
+        "n_epochs": 100,
+        "batch_size": 1024,
+        "weight_decay": 5e-4,
+        "neg_samples": 1,
+        "data_size_ratio": 1,
+        "use_cuda": true
+    },
+
+    "drugbank_s0_11": {
+        "trans_ddi_train": "./data/DB/train_s0.csv",
+        "trans_ddi_valid": "./data/DB/valid_s0.csv",
+        "trans_ddi_test": "./data/DB/test_s0.csv",
+        
+        "ddis":"./data/DB/ddis_processed.csv",
+        "drugs_smiles": "./data/DB/drug_smiles.csv",
+        "fp": "./fp/features/drugbank.npz",
+        
+        "seed":11,
+        "result":"./result/drugbank/s0_11.txt",
+        "transductive_pkl_dir": "./pkl/db_s0_11.pkl"
+    }
+}

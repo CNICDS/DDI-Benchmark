@@ -1,0 +1,43 @@
+SumGNN:
+python train.py 
+    -d drugbank         # task(drugbank or BioSNAP)
+    -e ddi_hop3         # the name for the log for experiments
+    --gpu=0             # ID of GPU
+    --hop=3             # size of the hops for subgraph
+    --batch=256         # batch size for samples
+    --emb_dim=32        # size of embedding for GNN layers
+    -b=10               # size of basis for relation kernel
+
+KnowDDI:
+python train.py -e Drugbank   #multi-class
+python train.py -e BioSNAP --dataset=BioSNAP --eval_every_iter=452 
+                --weight_decay_rate=0.00001 --threshold=0.1 --lamda=0.5 
+                --num_infer_layers=1 --num_dig_layers=3 
+                --gsl_rel_emb_dim=24 --MLP_hidden_dim=24 
+                --MLP_num_layers=3 --MLP_dropout=0.2          #multi-label
+
+
+IK-DDI,3DGT-DDI,DESC_MOL-DDIE:
+python run.py 
+
+MSMDL-DDI,SSI-DDI：
+python train_script.py <parameters>
+
+SA-DDI,LSFC,DGNN:
+python train.py --fold 0 --save_model
+
+DeepDrug:
+python deepdrug.py --configfile ./config/DrugBank.binary.yml
+
+Molormer:
+python train.py
+
+DSN-DDI:
+python -u drugbank_test/transductive_train.py
+
+MCFF-MTDDI:
+python multi-class-prediction.py
+
+PEB-DDI:
+python transductive_train.py
+python inductive_s12.py
